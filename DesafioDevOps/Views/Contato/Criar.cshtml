@@ -1,0 +1,36 @@
+﻿@model ContatoModel
+@{
+    ViewData["Title"] = "Criar contato";
+}
+<div class="text-center">
+
+    <h1 class="display-4">Cadastrar contatos</h1>
+
+</div>
+
+<form asp-controller="Contato" asp-action="Criar" method="post">
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Nome</label>
+    <input type="text" asp-for="Name" class="form-control" placeholder="Digite o nome do contato">
+    @Html.ValidationMessageFor(x => x.Name)
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">E-mail</label>
+    <input type="email" asp-for="Email" class="form-control" placeholder="Digite o e-mail do contato">
+    @Html.ValidationMessageFor(x => x.Email)
+  </div>
+
+  <div class="mb-3">
+    <label for="celular" class="form-label">Celular</label>
+    <input type="text" asp-for="Celular" class="form-control" placeholder="Digite o celular do contato">
+    @Html.ValidationMessageFor(x => x.Celular)
+  </div>
+
+  <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Adicionar</button>
+      <a class="btn btn-secondary asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+  </div>
+</form>
+
