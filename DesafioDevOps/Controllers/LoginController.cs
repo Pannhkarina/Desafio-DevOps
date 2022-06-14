@@ -53,7 +53,7 @@ namespace DesafioDevOps.Controllers
                             return RedirectToAction("Index", "Home");
                         }
 
-                        TempData["MensagemErro"] = $"A senha do usuário é invalida). Por favor, tente novamente.";
+                        TempData["MensagemErro"] = $"A senha do usuário é invalida. Por favor, tente novamente.";
                         return RedirectToAction("Index");
 
                     }

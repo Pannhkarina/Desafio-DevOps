@@ -5,7 +5,6 @@ using System.Diagnostics;
 
 namespace DesafioDevOps.Controllers
 {
-    [PaginaParaUsuarioLogado]
 
     public class HomeController : Controller
     {

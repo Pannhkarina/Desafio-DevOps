@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioDevOps.Controllers
 {
-    [PaginaParaUsuarioLogado]
+    
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRepositorio;

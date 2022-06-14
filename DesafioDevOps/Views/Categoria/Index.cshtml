@@ -1,0 +1,65 @@
+﻿@model List<CategoriaModel>
+@{
+    ViewData["Title"] = "Lista de categoria";
+}
+<div class="text-center">
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-primary" role="button" asp-controller="Categoria" asp-action="Criar">Adicionar nova categoria</a>
+    </div>
+    <br />
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" arial-label="close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if(TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" data-bs-dismiss="alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]    
+         </div>
+    }
+    <br /> 
+    <h1 class="display-4">Lista de categorias</h1>
+
+    <table class="table" id="table-categoria">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Categorias</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Data de cadastro</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+            @if(Model != null && Model.Any())
+            {
+                foreach (CategoriaModel categoria in Model)
+                {
+                    <tr>
+                      <th scope="row">@categoria.Id</th>
+                      <td>@categoria.Categoria</td>
+                      <td>@categoria.Descricao</td>
+                      <td>@categoria.DataCadastro</td>
+                       <td>
+                        <div class="btn-group" role="group">
+                            <a role="button" class="btn btn-primary" asp-route-id="@categoria.Id" asp-controller="Categoria" asp-action="Editar">Editar</a>
+                            <a role="button" class="btn btn-danger" asp-route-id="@categoria.Id" asp-controller="Categoria" asp-action="ApagarConfirmacao">Apagar</a>
+                        </div>
+                      </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr class="odd"><td valign="top" colspan="5">Nenhuma categoria encontrada</td></tr> 
+            }
+            
+        </tbody>
+    </table>
+</div>

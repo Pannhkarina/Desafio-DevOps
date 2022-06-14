@@ -20,7 +20,6 @@ namespace DesafioDevOps.ViewComponents
                 UsuarioModel usuario = JsonConvert.DeserializeObject<UsuarioModel>(sessaoUsuario);
                 return View(usuario);
             }
-
             
         }
 

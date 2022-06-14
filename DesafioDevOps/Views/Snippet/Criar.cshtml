@@ -1,0 +1,49 @@
+﻿@using DesafioDevOps.Enums
+@model SnippetModel
+
+@{
+    ViewData["Title"] = "Criar snippet";
+}
+<div class="text-center">
+
+    <h1 class="display-4">Cadastrar snippet</h1>
+
+</div>
+
+<form asp-controller="Snippet" asp-action="Criar" method="post">
+
+  <div class="mb-3">
+     <label for="categoria" class="form-label">Categorias</label>
+    <input type="text" asp-for="Categorias" class="form-control" placeholder="Insira o conteúdo">
+    @Html.ValidationMessageFor(x => x.Categorias)
+  </div>
+
+  <div class="mb-3">
+    <label for="conteudo" class="form-label">Conteúdo</label>
+    <input type="text" asp-for="Conteudo" class="form-control" placeholder="Insira o conteúdo">
+    @Html.ValidationMessageFor(x => x.Conteudo)
+  </div>
+
+  <div class="mb-3">
+    <label for="tag" class="form-label">Tag</label>
+    <input type="text" asp-for="Tag" class="form-control" placeholder="Digite uma tag">
+    @Html.ValidationMessageFor(x => x.Tag)
+  </div>
+
+  <div class="mb-3">
+    <label for="permissao" class="form-label">Permissão</label>
+    <select asp-for="Permissao" class="form-control">
+        <option value="">Selecione</option>
+        <option value="@PermissaoEnum.Privado">Privado</option>
+        <option value="@PermissaoEnum.Publico">Público</option>
+    </select>
+    @Html.ValidationMessageFor(x => x.Permissao)
+  </div>
+
+  <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary">Adicionar</button>
+      <a class="btn btn-secondary" asp-controller="Snippet" asp-action="Index" role="button">Voltar</a>
+  </div>
+
+</form>
+

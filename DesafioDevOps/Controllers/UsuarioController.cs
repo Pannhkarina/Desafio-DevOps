@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioDevOps.Controllers
 {
-    [PaginaRestritaSomenteAdmin]
     public class UsuarioController : Controller
     {
         private readonly IUsuarioRepositorio _usuarioRepositorio;

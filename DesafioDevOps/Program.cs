@@ -20,6 +20,8 @@ namespace DesafioDevOps
             builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             builder.Services.AddScoped<ISessao, Sessao>();
+            builder.Services.AddScoped<ISnippetRepositorio, SnippetRespositorio>();
+            builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRespositorio>();
 
             builder.Services.AddSession(o =>
             { 
