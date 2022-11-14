@@ -12,10 +12,16 @@
 
 <form asp-controller="Snippet" asp-action="Criar" method="post">
 
-  <div class="mb-3">
-     <label for="categoria" class="form-label">Categorias</label>
-    <input type="text" asp-for="Categorias" class="form-control" placeholder="Insira o conteúdo">
-    @Html.ValidationMessageFor(x => x.Categorias)
+  
+
+   <div class="mb-3">
+    <label for="categoriaId" class="form-label">Categorias</label>
+    <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.Categorias">
+        <option value="">Selecione</option>
+
+
+    </select>
+    @Html.ValidationMessageFor(x => x.CategoriaId)
   </div>
 
   <div class="mb-3">

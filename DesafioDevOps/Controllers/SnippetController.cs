@@ -1,18 +1,20 @@
 ﻿using DesafioDevOps.Models;
 using DesafioDevOps.Repositorio;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 
 namespace DesafioDevOps.Controllers
 {
     public class SnippetController : Controller
     {
+        private readonly ICategoriaRepositorio _categoriaRepositorio;
         private readonly ISnippetRepositorio _snippetRepositorio;
 
-        
-       
-        public SnippetController(ISnippetRepositorio snippetRepositorio)
+        public SnippetController(ISnippetRepositorio snippetRepositorio, ICategoriaRepositorio categoriaRepositorio)
         {
             _snippetRepositorio = snippetRepositorio;
+            _categoriaRepositorio = categoriaRepositorio;
         }
         public IActionResult Index()
         {
@@ -114,5 +116,6 @@ namespace DesafioDevOps.Controllers
         }
 
 
+        
     }
 }

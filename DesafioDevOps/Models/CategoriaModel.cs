@@ -9,10 +9,10 @@ namespace DesafioDevOps.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "É necessário informar o titulo")]
-        public string Categoria { get; set; }
+        public string? Categoria { get; set; }
 
         [Required(ErrorMessage = "É necessário inserir uma descrição")]
-        public string Descricao { get; set;}
+        public string? Descricao { get; set;}
         public DateTime DataCadastro { get; set; }
         public DateTime? DataAtualizacao { get; set; }
 

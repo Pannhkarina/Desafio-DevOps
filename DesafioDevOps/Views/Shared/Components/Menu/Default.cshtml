@@ -16,17 +16,21 @@
                            <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Snippet" asp-action="Index">Snippet</a>
                         </li>
-                         <li class="nav-item">
-                              <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
-                            </li>
+                        
 
                         @if(Model.Perfil == DesafioDevOps.Enums.PerfilEnum.Admin)
                         {
+                             <li class="nav-item">
+                              <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuarios</a>
+                            </li>
                            
                              <li class="nav-item">
                               <a class="nav-link text-dark" asp-area="" asp-controller="Categoria" asp-action="Index">Categoria</a>
                             </li>
                         }
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="AlterarSenha" asp-action="Index">Alterar Senha</a>
+                        </li>
                          <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Sair">Sair</a>
                         </li>

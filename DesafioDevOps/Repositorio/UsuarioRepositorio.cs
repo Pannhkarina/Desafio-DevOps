@@ -14,7 +14,16 @@ namespace DesafioDevOps.Repositorio
         {
             return _context.Usuarios.FirstOrDefault(x => x.Login.ToUpper() == login.ToUpper());
         }
+        public UsuarioModel BuscarPorEmailELogin(string email, string login)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Login.ToUpper() == login.ToUpper());
+        }
         public UsuarioModel ListarPorId(int id)
+        {
+            return _context.Usuarios.FirstOrDefault(x => x.Id == id);
+        }
+
+        public UsuarioModel BuscarPorID(int id)
         {
             return _context.Usuarios.FirstOrDefault(x => x.Id == id);
         }
@@ -49,6 +58,27 @@ namespace DesafioDevOps.Repositorio
 
             return usuarioDB;
         }
+
+        public UsuarioModel AlterarSenha(AlterarSenhaModel alterarSenhaModel)
+        {
+            UsuarioModel usuarioDB = BuscarPorID(alterarSenhaModel.Id);
+
+            if (usuarioDB == null) throw new Exception("Ocorreu um erro na atualização da senha, usuário não encontrado.");
+
+            if (!usuarioDB.SenhaValida(alterarSenhaModel.SenhaAtual)) throw new Exception("Senha atual não confere!");
+
+            if (usuarioDB.SenhaValida(alterarSenhaModel.NovaSenha)) throw new Exception("A nova senha deve ser diferente da senha atual.");
+
+            usuarioDB.SetNovaSenha(alterarSenhaModel.NovaSenha);
+            usuarioDB.DataAtualizacao = DateTime.Now;
+
+            _context.Usuarios.Update(usuarioDB);
+            _context.SaveChanges();
+
+            return usuarioDB;
+
+
+        }
         public bool Apagar(int id)
         {
             UsuarioModel usuarioDB = ListarPorId(id);
@@ -60,7 +90,5 @@ namespace DesafioDevOps.Repositorio
 
             return true;
         }
-
-      
     }
 }
